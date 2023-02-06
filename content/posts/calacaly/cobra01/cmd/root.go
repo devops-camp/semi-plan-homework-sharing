@@ -28,19 +28,20 @@ import (
 	"github.com/spf13/cobra"
 )
 
+var (
+	age  uint8
+	name string
+)
+
 // rootCmd represents the base command when called without any subcommands
 var rootCmd = &cobra.Command{
 	Use:   "cobra01",
-	Short: "A brief description of your application",
-	Long: `A longer description that spans multiple lines and likely contains
-examples and usage of using your application. For example:
-
-Cobra is a CLI library for Go that empowers applications.
-This application is a tool to generate the needed files
-to quickly create a Cobra application.`,
+	Short: "cobra01 参数绑定和编译",
+	Long:  `cobra01 参数绑定和编译`,
 	// Uncomment the following line if your bare application
 	// has an action associated with it:
 	Run: func(cmd *cobra.Command, args []string) {
+		/* Without pointer
 		age, err := cmd.Flags().GetUint8("age")
 		if err != nil {
 			fmt.Println(err)
@@ -51,7 +52,7 @@ to quickly create a Cobra application.`,
 		if err != nil {
 			fmt.Println(err)
 			return
-		}
+		}*/
 
 		fmt.Printf("%s 你好, 今年 %d 岁\n", name, age)
 	},
@@ -76,6 +77,12 @@ func init() {
 	// Cobra also supports local flags, which will only run
 	// when this action is called directly.
 	//rootCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
-	rootCmd.Flags().Uint8P("age", "a", 20, "set your age")
-	rootCmd.Flags().StringP("name", "n", "", "set your name")
+
+	/*With pointer function*/
+	rootCmd.Flags().Uint8VarP(&age, "age", "a", 20, "set your age")
+	rootCmd.Flags().StringVarP(&name, "name", "n", "", "set your name")
+
+	/*Without pointer function*/
+	//rootCmd.Flags().Uint8P("age", "a", 20, "set your age")
+	//rootCmd.Flags().StringP("name", "n", "", "set your name")
 }

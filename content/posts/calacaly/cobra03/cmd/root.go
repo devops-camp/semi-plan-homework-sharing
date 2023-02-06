@@ -30,6 +30,12 @@ import (
 	"github.com/spf13/viper"
 )
 
+var (
+	color string
+	name  string
+	age   uint
+)
+
 // rootCmd represents the base command when called without any subcommands
 var rootCmd = &cobra.Command{
 	Use:   "cobra03",
@@ -41,45 +47,17 @@ interactive input will be performed`,
 	// has an action associated with it:
 	Run: func(cmd *cobra.Command, args []string) {
 
-		age, err := cmd.Flags().GetUint("age")
-		if err != nil {
-			fmt.Println(err)
-			return
-		} else {
-			if age == 20 {
-				ans, err := prompt_age()
-				if err != nil {
-					fmt.Println(err)
-					return
-				}
-				age = ans.Age
-				viper.Set("age", age)
-			}
+		if name == "" {
+			prompt_name()
 		}
 
-		name, err := cmd.Flags().GetString("name")
-		if err != nil {
-			fmt.Println(err)
-			return
-		} else {
-			if name == "" {
-				ans, err := prompt_name()
-				if err != nil {
-					fmt.Println(err)
-					return
-				}
-				name = ans.Name
-				viper.Set("name", name)
-			}
+		if color == "" {
+			prompt_color()
 		}
 
-		ans, err := prompt_color()
-		if err != nil {
-			fmt.Println(err)
-			return
+		if age == 0 {
+			prompt_age()
 		}
-		color := ans.FavoriteColor
-		viper.Set("color", color)
 
 		fmt.Printf("\n我叫 %s , 今年 %d 岁了, 最喜欢的颜色是 %s\n\n", name, age, color)
 
@@ -109,18 +87,16 @@ func init() {
 	// Cobra also supports local flags, which will only run
 	// when this action is called directly.
 	//rootCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
-	rootCmd.Flags().UintP("age", "a", 20, "set your age, or wait for the prompt to enter")
-	rootCmd.Flags().StringP("name", "n", "", "set your name, or wait for the prompt to enter")
+	rootCmd.PersistentFlags().StringVarP(&name, "name", "n", "", "set your name,ignore config setting")
+	rootCmd.PersistentFlags().UintVarP(&age, "age", "a", 0, "set your age,ignore config setting")
+	rootCmd.PersistentFlags().StringVarP(&color, "color", "c", "", "set your age,ignore config setting")
+	viper.BindPFlag("color", rootCmd.PersistentFlags().Lookup("color"))
+	viper.BindPFlag("name", rootCmd.PersistentFlags().Lookup("name"))
+	viper.BindPFlag("age", rootCmd.PersistentFlags().Lookup("age"))
 
 }
 
-type ANSWERS struct {
-	Name          string // survey will match the question and field names
-	FavoriteColor string `survey:"color"` // or you can tag fields to match a specific name
-	Age           uint   // if the types don't match, survey will convert it
-}
-
-func prompt_name() (ANSWERS, error) {
+func prompt_name() {
 	var qs = []*survey.Question{
 		{
 			Name:      "name",
@@ -129,14 +105,15 @@ func prompt_name() (ANSWERS, error) {
 			Transform: survey.Title,
 		},
 	}
-	answers := ANSWERS{}
 
 	// perform the questions
-	err := survey.Ask(qs, &answers)
-	return answers, err
+	err := survey.Ask(qs, &name)
+	if err != nil {
+		fmt.Println(err)
+	}
 }
 
-func prompt_color() (ANSWERS, error) {
+func prompt_color() {
 	var qs = []*survey.Question{
 		{
 			Name: "color",
@@ -147,23 +124,25 @@ func prompt_color() (ANSWERS, error) {
 			},
 		},
 	}
-	answers := ANSWERS{}
 
 	// perform the questions
-	err := survey.Ask(qs, &answers)
-	return answers, err
+	err := survey.Ask(qs, &color)
+	if err != nil {
+		fmt.Println(err)
+	}
 }
 
-func prompt_age() (ANSWERS, error) {
+func prompt_age() {
 	var qs = []*survey.Question{
 		{
 			Name:   "age",
 			Prompt: &survey.Input{Message: "How old are you?"},
 		},
 	}
-	answers := ANSWERS{}
 
 	// perform the questions
-	err := survey.Ask(qs, &answers)
-	return answers, err
+	err := survey.Ask(qs, &age)
+	if err != nil {
+		fmt.Println(err)
+	}
 }

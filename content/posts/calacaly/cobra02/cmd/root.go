@@ -29,62 +29,25 @@ import (
 	"github.com/spf13/viper"
 )
 
-var cfgFile string
+var (
+	cfgFile string
+	name    string
+	age     uint
+)
 
 // rootCmd represents the base command when called without any subcommands
 var rootCmd = &cobra.Command{
 	Use:   "cobra02",
-	Short: "A brief description of your application",
-	Long: `A longer description that spans multiple lines and likely contains
-examples and usage of using your application. For example:
-
-Cobra is a CLI library for Go that empowers applications.
-This application is a tool to generate the needed files
-to quickly create a Cobra application.`,
+	Short: "cobra02配置文件",
+	Long:  `cobra02配置文件`,
 	// Uncomment the following line if your bare application
 	// has an action associated with it:
 	Run: func(cmd *cobra.Command, args []string) {
 
-		config_err := viper.ReadInConfig()
-
-		age, err := cmd.Flags().GetUint("age")
-		if err != nil {
-			fmt.Println(err)
-			return
-		} else {
-			if age == 20 && config_err == nil {
-				age = viper.GetUint("age")
-			} else {
-				viper.Set("age", age)
-			}
-		}
-
-		name, err := cmd.Flags().GetString("name")
-		if err != nil {
-			fmt.Println(err)
-			return
-		} else {
-			if name == "" && config_err == nil {
-				name = viper.GetString("name")
-			} else {
-				viper.Set("name", name)
-			}
-		}
-
 		fmt.Printf("\n%s 你好, 今年 %d 岁\n\n", name, age)
 
-		if config_err == nil {
-			viper.WriteConfigAs("config.json")
-
-			config, err := cmd.PersistentFlags().GetString("config")
-
-			if err != nil {
-				fmt.Println(err)
-				return
-			}
-
-			fmt.Printf("%s saved as config.json\n", config)
-		}
+		viper.WriteConfigAs("config.json")
+		fmt.Printf("config.yml saved as config.json\n")
 
 	},
 }
@@ -109,11 +72,12 @@ func init() {
 	// Cobra also supports local flags, which will only run
 	// when this action is called directly.
 	//rootCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
-	rootCmd.Flags().UintP("age", "a", 20, "set your age")
-	rootCmd.Flags().StringP("name", "n", "", "set your name")
-	rootCmd.PersistentFlags().StringVarP(&cfgFile, "config", "c", "config.yml", `Set a configuration file, output information, and it will be converted to config.json.
-if you set --name value or --age value, except the default, this will also be saved in the file.`)
+	rootCmd.PersistentFlags().StringVarP(&name, "name", "n", "", "set your name,ignore config setting")
+	rootCmd.PersistentFlags().UintVarP(&age, "age", "a", 20, "set your age,ignore config setting")
+	rootCmd.PersistentFlags().StringVarP(&cfgFile, "config", "c", "config.yml", `Set a configuration file, output information, and it will be converted to config.json.`)
 
+	viper.BindPFlag("name", rootCmd.PersistentFlags().Lookup("name"))
+	viper.BindPFlag("age", rootCmd.PersistentFlags().Lookup("age"))
 }
 
 func initConfig() {
@@ -136,6 +100,10 @@ func initConfig() {
 
 	if err := viper.ReadInConfig(); err == nil {
 		fmt.Println("Using config file:", viper.ConfigFileUsed())
+
+		age = viper.GetUint("age")
+		name = viper.GetString("name")
+
 	} else {
 		fmt.Println(err)
 	}
