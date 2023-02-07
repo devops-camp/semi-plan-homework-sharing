@@ -1,0 +1,95 @@
+baseURL = "https://www.devopscamp.cc/semi-plan-202301-2"
+# 网站标题
+title = "《DevOpsCamp半月刊 202301-2》 总 1 期 "
+# 更改使用 Hugo 构建网站时使用的默认主题
+theme = "maupassant-hugo"
+
+
+## 主题配置
+# [en, zh-cn, fr, ...] 设置默认的语言
+defaultContentLanguage = "zh-hans"
+# 网站语言, 仅在这里 CN 大写
+languageCode = "zh-CN"
+# 是否包括中日韩文字
+hasCJKLanguage = true
+
+## 保持分类的原始名字（false会做转小写处理）
+preserveTaxonomyNames = true
+## 是否禁止URL Path转小写
+disablePathToLower = true
+summaryLength = 140
+
+[author]
+  name = "老麦"
+
+[params]
+  author = "老麦"
+  subtitle = "Go语言(golang)、 云原生、 DevOps、 可视化追踪。 React 入门。"
+  keywords = "golang,go语言,go语言笔记,可视化追踪,运维,DevOps,老麦,博客,项目管理"
+  description = "专注于IT互联网， 包括但不限于Go语言(golang)、DevOps、云原生等"
+
+#   beian = "蜀ICP备16002016号-2"
+#   localSearch = true # 启用本地搜索
+  busuanzi = true #启用不算子网页统计
+
+  # 这里我存放在了主题的static文件夹里，根目录的似乎也可以
+#   customCSS = ['dashang.css']
+#   # if ['custom.css'], load '/static/css/custom.css' file
+#   customJS = ['douban.js']
+#   # if ['custom.js'], load '/static/js/custom.js' file
+
+  # 全局开关，你也可以在每一篇内容的 front matter 中针对单篇内容关闭或开启某些功能
+  toc = true  # 是否开启目录
+
+
+  # 加速 公共 js
+#   cdnJsSite = "cdn.bootcdn.net" # 默认：cdnjs.cloudflare.com
+
+
+# # 公众号订阅配置订阅信息
+# [params.follow]
+#     mp_name = "Go与云原生"
+#     mp_qrcode = "/mp/qrcode.png"
+# # 打赏
+# [params.dashang]
+#     enabled = false 
+#     alipay = "/mp/alipay.jpg"
+#     wxpay = "/mp/wxpay.jpg"
+
+[params.image_handler]
+    # 是否去除项目工程前缀
+    workspace_prefix = "/static"
+    # # 外部 CDN 加速图片
+    # image_cdn_host = "https://static.tangx.in"
+    # # 是否替换为压缩图片
+    # compress_png_suffix = "-fs8.png!v1"
+
+
+# 代码高亮
+[markup]
+  [markup.highlight]
+    lineNos = true
+    style = "github"
+
+[menu]
+#   [[menu.main]]
+#     identifier = "posts"
+#     name = "文章"
+#     url = "/posts/"
+#     title = ""
+#     weight = 1
+
+[params.cc]
+    name = "知识共享署名-非商业性使用-禁止演绎 4.0 国际许可协议"
+    link = "https://creativecommons.org/licenses/by-nc-nd/4.0/"
+
+[params.utteranc]
+    enable = true
+    repo = "devops-camp/semi-plan-202301-2"    # 存储评论的Repo，格式为 owner/repo
+    issueTerm = "pathname"  #表示你选择以那种方式让github issue的评论和你的文章关联。
+    theme = "github-light" # 样式主题，有github-light和github-dark两种
+
+[sitemap]
+  changefreq = 'daily'
+  filename = 'sitemap.xml'
+  priority = 0.8
