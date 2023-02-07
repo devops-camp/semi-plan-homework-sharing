@@ -1,23 +1,22 @@
-# cobra02
-
+---
 title: "作业: cobra - 02 读取配置配置文件"
 categories:
-&#x20; \- 半月刊
+  - semi-plan 
 tags:
-&#x20; \- 半月刊202301下
-&#x20; \- code
+  - semi-plan-202301-b 
+  - cobra02
 date: "2023-01-13T15:19:07+08:00"
 lastmod: "2023-01-13T15:19:07+08:00"
 toc: true
 draft: false
 hiddenFromHomePage: false
 
-\#  提交作业修改一下内容
+#  提交作业修改一下内容
 pinTop: true
-originAuthor: calacaly
+originAuthor: homework
 originLink: ""
+---
 
-***
 
 # 作业: cobra - 02 读取配置配置文件
 
