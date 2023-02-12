@@ -1,23 +1,25 @@
-# cobra03
 
+---
 title: "作业: cobra - 03 交互式命令"
 categories:
-&#x20; \- 半月刊
+  - semi-plan 
 tags:
-&#x20; \- 半月刊202301下
-&#x20; \- code
+  - semi-plan-202301-b 
+  - cobra03
+
 date: "2023-01-13T15:19:07+08:00"
 lastmod: "2023-01-13T15:19:07+08:00"
 toc: true
 draft: false
 hiddenFromHomePage: false
 
-\#  提交作业修改一下内容
-pinTop: true
-originAuthor: calacaly
-originLink: ""
 
-***
+#  提交作业修改一下内容
+pinTop: true
+originAuthor: homework
+originLink: ""
+---
+
 
 # 作业: cobra - 03 交互式命令
 
