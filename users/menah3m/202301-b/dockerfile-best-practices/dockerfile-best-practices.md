@@ -13,7 +13,7 @@ draft: false
 hiddenFromHomePage: false
 
 #  提交作业修改一下内容
-pinTop: true
+pinTop: false
 originAuthor: menah3m
 originLink: "https://github.com/Menah3m"
 ---
