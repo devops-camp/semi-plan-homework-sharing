@@ -112,7 +112,7 @@ type Person {
        }
       ```
       > 需要导入 pkg/greeting 包 才可以正常使用 greeting 包中定义的结构体和方法
-   >![img.png](./images/img.png)
+   >![img.png](images/img.png)
 
 ### 循环依赖
 Go 包的依赖关系只能是单向的关系，如果包与包之间的依赖关系形成一个闭环，Go 程序编译时会报错
