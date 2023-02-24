@@ -13,8 +13,12 @@ func (p Person)Eat(){
 	fmt.Println("我爱吃大米")
 }
 
+func (p Person)Read(){
+	fmt.Println("我会读书")
+}
+
 func (p Person)Me(){
-	fmt.Printf("我是人, 名字叫%s\n",p.Name)
+	fmt.Printf("我是人, 长得像%s\n",p.Name)
 }
 
 type Panda struct{
@@ -26,5 +30,5 @@ func (p Panda)Eat(){
 }
 
 func (p Panda)Me(){
-	fmt.Printf("我是熊猫, 名字叫%s\n",p.Name)
+	fmt.Printf("我是熊猫, 长得像%s\n",p.Name)
 }

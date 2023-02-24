@@ -29,4 +29,12 @@ func main(){
 
 	duck2.WhoAreYou(b)
 	duck2.Eating(b)
+
+	fmt.Println("=====self=====")
+	a.Me()
+	a.Eat()
+	a.Read()
+
+	b.Me()
+	b.Eat()
 }
