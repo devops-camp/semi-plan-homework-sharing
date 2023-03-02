@@ -1,5 +1,14 @@
 # 《初一十五计划(Semimonthly Plan)》
 
+《初一十五计划》 是 [DevOpsCamp https://www.devopscamp.cc](https://www.devopscamp.cc) 训练营中的其中一个学习计划。 
+
+目的是在通过 **将大而全的知识点拆分**， 让大家能逐步掌握。 完成 **总-分-总** 的进阶目标。
+
+
+<img src="https://typonotes.com/mp/wx-qrcode-mini.png" width="200px"/>
+
+添加好友， 备注 **DevOps** 入群
+
 ## 作业分享
 
 1. `fork` 本仓库 [devops-camp/semi-plan-homework](https://github.com/devops-camp/semi-plan-homework)
@@ -8,6 +17,7 @@
 
 
 ## 参考答案
+
 ### 202301-b
 
 + [cobra - 01 初始化第一个命令及参数绑定](https://mp.weixin.qq.com/s/Zx7ryE2I7LyM6YPkr-cSdg)
@@ -25,7 +35,7 @@
 ### 202302-b
 
 + [cobra - 08 cobrautils 使用反射获取 flag 配置， 支持指针字段](https://mp.weixin.qq.com/s/w91TgIye42rTIzuqsbeZZQ)
-+ golang-interface-sample
-+ golang-context-sample
++ [Golang 接口(interface) 一个案例讲清楚「接口实现」和「使用注意」](https://mp.weixin.qq.com/s/U0v-PIbknRzDgm_lTkzTcA)
++ [Golang 上下文(Context) (1): 带你看源码搞懂「值传递」](https://mp.weixin.qq.com/s/lYFOY3tucxp9kFmX6V5G3Q)
 
 
